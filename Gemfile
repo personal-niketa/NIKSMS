@@ -39,6 +39,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem "haml-rails", "~> 2.0"
 gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails-ujs', '~> 0.1.0'
+gem 'pry'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

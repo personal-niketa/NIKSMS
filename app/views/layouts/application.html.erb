@@ -11,7 +11,11 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class= 'body-background'>
+    <%= render 'layouts/navbar' %>
     <%= yield %>
+    <div class='footer'>
+      <p> SchoolManagement@gmail.com </p> 
+    </div>  
   </body>
 </html>
