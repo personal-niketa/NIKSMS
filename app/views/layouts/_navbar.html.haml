@@ -1,0 +1,15 @@
+%nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      %a.navbar-brand{:href => "#"} NIKSMS 
+    %ul.nav.navbar-nav.navbar-right
+      -if params[:controller] == 'welcome' && params[:action] == 'index' 
+        %li
+          = link_to welcome_registeration_path do
+            %i.glyphicon.glyphicon-user
+            Sign Up
+      -if params[:controller] == 'welcome' && params[:action] == 'registeration'     
+        %li
+          = link_to root_path do
+            %i.glyphicon.glyphicon-log-in
+            Login

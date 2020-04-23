@@ -1,0 +1,10 @@
+.wrapper.fadeInDown
+  #formContent
+    .fadeIn.first
+      %h1 Register Your School
+    %form
+      %input#school_name.fadeIn.second{:school_name => "school_name", :placeholder => "School Name", :type => "text"}/
+      %input#contact_person_name.fadeIn.second{:contact_person_name => "contact_person_name", :placeholder => "Contact Person Name", :type => "text"}/
+      %input#contact_email.fadeIn.third{:contact_email => "contact_email", :placeholder => "Contact Email", :type => "text"}/
+      %input#contactNo.fadeIn.third{:contact_no => "contact_no", :placeholder => "Contact No", :type => "text", min: "0"}/
+      %input.fadeIn.fourth{:type => "submit", :value => "Register"}/

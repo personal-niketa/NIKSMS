@@ -1,0 +1,10 @@
+.wrapper.fadeInDown
+  #formContent
+    .fadeIn.first
+      %h1 Log In Here
+    %form
+      %input#login.fadeIn.second{:name => "email", :placeholder => "email", :type => "text"}/
+      %input#password.fadeIn.third{:name => "password", :placeholder => "password", :type => "password"}/
+      %input.fadeIn.fourth{:type => "submit", :value => "Log In"}/
+    #formFooter
+      %a.underlineHover{:href => "#"} Forgot Password?
