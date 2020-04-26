@@ -2,9 +2,15 @@
   #formContent
     .fadeIn.first
       %h1 Register Your School
-    %form
-      %input#school_name.fadeIn.second{:school_name => "school_name", :placeholder => "School Name", :type => "text"}/
-      %input#contact_person_name.fadeIn.second{:contact_person_name => "contact_person_name", :placeholder => "Contact Person Name", :type => "text"}/
-      %input#contact_email.fadeIn.third{:contact_email => "contact_email", :placeholder => "Contact Email", :type => "text"}/
-      %input#contactNo.fadeIn.third{:contact_no => "contact_no", :placeholder => "Contact No", :type => "text", min: "0"}/
-      %input.fadeIn.fourth{:type => "submit", :value => "Register"}/
+    / %form
+    /   %input#school_name.fadeIn.second{:school_name => "school_name", :placeholder => "School Name", :type => "text"}/
+    /   %input#contact_person_name.fadeIn.second{:contact_person_name => "contact_person_name", :placeholder => "Contact Person Name", :type => "text"}/
+    /   %input#contact_email.fadeIn.third{:contact_email => "contact_email", :placeholder => "Contact Email", :type => "text"}/
+    /   %input#contactNo.fadeIn.third{:contact_no => "contact_no", :placeholder => "Contact No", :type => "text", min: "0"}/
+    /   %input.fadeIn.fourth{:type => "submit", :value => "Register"}/
+    = form_tag schools_path, method: :post do
+      = text_field_tag :school_name, '', class: 'fadeIn second', id: 'school_name', placeholder: 'School Name', type: 'text'
+      = text_field_tag :person_name, '', class: 'fadeIn second', id: 'contact_person_name', placeholder: 'Contact Person Name', type: 'text'
+      = text_field_tag :contact_email, '', class: 'fadeIn third', id: 'contact_email', placeholder: 'Contact Email', type: 'text'
+      = text_field_tag :contact_number, '', class: 'fadeIn third', id: 'contactNo', placeholder: 'Contact No', type: 'text'
+      = submit_tag "Register", class: 'fadeIn fourth', type: 'submit'
