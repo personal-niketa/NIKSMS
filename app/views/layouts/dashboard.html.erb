@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niksms Dashboard</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'dashboard/dashboard'%>
+    <%= javascript_include_tag 'dashboard/dashboard', 'data-turbolinks-track': 'reload' %>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" id="bootstrap-css" rel="stylesheet"></link>
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  </head>
+
+  <body>
+    <%= render 'layouts/navbar' %>
+    <%= render 'layouts/flash_messages' %>
+    <%= render 'layouts/side_navbar' %>
+    <%= yield %>
+    <div class='footer'>
+      <p> NIKSMS2020@gmail.com </p> 
+    </div> 
+  </body>
+</html>

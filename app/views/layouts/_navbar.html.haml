@@ -3,13 +3,37 @@
     .navbar-header
       %a.navbar-brand{:href => "#"} NIKSMS 
     %ul.nav.navbar-nav.navbar-right
-      -if params[:controller] == 'welcome' && params[:action] == 'index' 
+      -if params[:controller] == 'welcome' && params[:action] == 'index'
         %li
           = link_to welcome_registeration_path do
             %i.glyphicon.glyphicon-user
             Sign Up
-      -if params[:controller] == 'welcome' && params[:action] == 'registeration'     
+      -if params[:controller] == 'welcome' && params[:action] == 'registeration'
         %li
           = link_to root_path do
             %i.glyphicon.glyphicon-log-in
             Login
+      -if params[:controller] == 'schools' && params[:action] == 'dashboard'
+        %li.dropdown
+          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+            %i.glyphicon.glyphicon-user
+            User
+            %b.caret
+          %ul.dropdown-menu
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-user
+                &nbsp;
+                My Profile
+            %li
+              %a{:href => "#"}
+                %i.glyphicon.glyphicon-off
+                &nbsp;
+                Sign Out
+
+:javascript
+  $('ul.nav li.dropdown').hover(function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeIn(500);
+  }, function() {
+    $(this).find('.dropdown-menu').stop(true, true).delay(200).fadeOut(500);
+  });
