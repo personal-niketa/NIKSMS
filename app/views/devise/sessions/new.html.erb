@@ -1,0 +1,16 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h1>Log in</h1>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "fadeIn second", placeholder: "Email" %>
+      <%= f.password_field :password, autocomplete: "current-password", class: "fadeIn third", placeholder: "Password"%>
+      <%= f.submit "Sign in", class: "fadeIn fourth"%>
+    <% end %>
+    <div id="formFooter">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

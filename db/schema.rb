@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_26_191527) do
+ActiveRecord::Schema.define(version: 2020_05_03_124946) do
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -24,13 +24,11 @@ ActiveRecord::Schema.define(version: 2020_04_26_191527) do
   end
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "person_name"
     t.text "school_name"
-    t.text "contact_email"
-    t.text "contact_number"
-    t.boolean "email_verified", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "address"
+    t.text "board"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -41,8 +39,13 @@ ActiveRecord::Schema.define(version: 2020_04_26_191527) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "phone"
+    t.bigint "school_id"
+    t.text "first_name"
+    t.text "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["school_id"], name: "index_users_on_school_id"
   end
 
   create_table "users_roles", id: false, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
