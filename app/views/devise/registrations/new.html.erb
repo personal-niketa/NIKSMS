@@ -1,0 +1,22 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h1>Sign up</h1>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: registration_users_path(resource_name)) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= f.text_field :school_name, autofocus: true, class: 'fadeIn first', placeholder: "School Name", id: 'school_name' %>
+      <%= f.text_field :first_name, class: 'fadeIn first', placeholder: "First Name", id: 'first_name' %>
+      <%= f.text_field :last_name, class: 'fadeIn first', placeholder: "Last Name", id: 'last_name' %>
+      <%= f.email_field :email, autocomplete: "email", class: 'fadeIn second', placeholder: "Email", id: 'email' %>
+      <%= f.text_field :phone, class: 'fadeIn second', placeholder: "Contact Number", id: 'phone' %>
+      <%= f.password_field :password, autocomplete: "new-password", class: 'fadeIn third', placeholder: "Password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'fadeIn third', placeholder: "Password Confirmation" %>
+      <%= f.submit "Sign up", class: 'fadeIn fourth'%>
+    <% end %>
+    <div id="formFooter">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

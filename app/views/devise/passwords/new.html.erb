@@ -1,0 +1,15 @@
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <div class="fadeIn first">
+      <h1>Forgot your password?</h1>
+    </div>
+    <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email",  class: 'fadeIn first', placeholder: "Email"  %>
+      <%= f.submit "Send me reset password instructions", class: 'fadeIn second', style: "width: 425px;"%>
+    <% end %>
+    <div id="formFooter">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

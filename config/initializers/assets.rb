@@ -2,7 +2,7 @@
 
 # Version of your assets, change this if you want to expire all your assets.
 Rails.application.config.assets.version = '1.0'
-Rails.application.config.assets.precompile += %w( welcome.scss )
+Rails.application.config.assets.precompile += %w( default_school.scss )
 Rails.application.config.assets.precompile += %w( dashboard/dashboard.scss )
 
 Rails.application.config.assets.precompile += %w(admin/admin.js dashboard/dashboard.js)
