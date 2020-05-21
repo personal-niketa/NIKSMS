@@ -1,0 +1,18 @@
+.container#centerwrap
+  %h1 Edit User Profile
+  = form_for @user, url: user_path(id: @user.id), method: :patch do |f|
+    .row
+      .form-group.col-sm-8
+        = f.label :email,'Email'
+        = f.text_field :email, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :first_name,'First Name'
+        = f.text_field :first_name, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :last_name,'Last Name'
+        = f.text_field :last_name, class: "form-control"
+    .row
+      .col-md-12
+        = f.submit "Update Profile", class: "btn btn-primary"

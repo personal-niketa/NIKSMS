@@ -163,3 +163,45 @@
   /* Hoverable drodown menu */
 
   
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr, td {
+  text-align: left;
+  padding: 8px;
+  color : black;
+  font-size: 25px;
+  font-style: italic;
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+
+tr{
+  padding-top: 10em;
+  padding-bottom: 10em;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+#centerwrap { 
+  position: absolute;
+  left: 30%;
+}   
+
+.button {
+  background-color: grey;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+}

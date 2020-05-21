@@ -15,7 +15,7 @@
             %b.caret
           %ul.dropdown-menu
             %li
-              %a{:href => "#"}
+              = link_to school_path(id: current_user.school_id), method: :get do
                 %i.glyphicon.glyphicon-user
                 &nbsp;
                 My Profile

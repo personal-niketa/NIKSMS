@@ -15,5 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'schools/dashboard'
+  resources :schools do
+    member do
+      get 'edit_profile'
+      post 'update_profile'
+    end
+  end
+
 end

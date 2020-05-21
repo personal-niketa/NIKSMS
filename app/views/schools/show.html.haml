@@ -1,0 +1,44 @@
+#centerwrap
+  .jumbotron
+    %h1 Personal Details
+    %table
+      %tr
+        %td Email:
+        %td
+          = current_user.email
+      %tr
+        %td First name
+        %td
+          = current_user.first_name
+      %tr
+        %td Last Name:
+        %td
+          = current_user.last_name
+    .div
+      = link_to edit_user_path(id: current_user.id), method: :get, class: 'button' do  
+        %i.glyphicon.glyphicon-edit
+        Modify Details
+
+  .jumbotron     
+    %h1 School Details
+    %table
+      %tr
+        %td School Name:
+        %td
+          = @school.school_name
+      %tr
+        %td School Address:
+        %td
+          = @school.address
+      %tr
+        %td School Board:
+        %td
+          = @school.board
+    .div
+      = link_to edit_profile_school_path(id: @school.id), method: :get, class: 'button' do  
+        %i.glyphicon.glyphicon-edit
+        Modify Details
+        
+
+
+

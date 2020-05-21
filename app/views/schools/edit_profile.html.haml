@@ -1,0 +1,28 @@
+.container#centerwrap
+  %h1 Edit Profile
+  = form_for @school, url: update_profile_school_path(id: @school.id), method: :post do |f|
+    .row
+      .form-group.col-sm-8
+        = f.label :school_name,'School Name'
+        = f.text_field :school_name, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :address,'Address'
+        = f.text_field :address, class: "form-control"
+    .row
+      .form-group.col-md-8    
+        = f.label :board,'Board'
+        %br/
+        .row
+          .col-md-2
+            = f.radio_button :board, 'CBSE'
+            = f.label :board, "CBSE"
+          .col-md-2
+            = f.radio_button :board, 'ICSE'
+            = f.label :board, "ICSE"
+          .col-md-2
+            = f.radio_button :board, 'UP BOARD'
+            = f.label :board, "UP BOARD"
+    .row
+      .col-md-12
+        = f.submit "Update Profile", class: "btn btn-primary"

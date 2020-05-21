@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout "application"
+  layout :resolve_layout
   
   def registration
     user = User.new(registration_params)
@@ -10,6 +11,20 @@ class UsersController < ApplicationController
       flash[:error] = "Sorry! Something went wrong. Please contact support."
     end
     redirect_to root_path
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = "Sucessfully updated!!"
+    else
+      flash[:error] = "Sorry! Something went wrong. Please contact support."
+    end
+    redirect_to school_path(id: @user.school_id)
   end
 
   private
@@ -23,4 +38,18 @@ class UsersController < ApplicationController
     params.require(:user).permit(:first_name, :last_name, :email,
                                 :phone, :password, :password_confirmation, :school_name)
   end
+
+  def user_params
+    params.require(:user).permit(:email, :first_name, :last_name)
+  end
+
+  def resolve_layout
+    case action_name
+    when "edit"
+      "dashboard"
+    else
+      "application"
+    end
+  end
+
 end
