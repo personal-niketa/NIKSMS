@@ -1,6 +1,6 @@
 .container#centerwrap
-  %h1 Edit User Profile
-  = form_for @user, url: user_path(id: @user.id), method: :patch do |f|
+  %h1 Add New User
+  = form_for @user, url: create_user_users_path, method: :post do |f|
     .row
       .form-group.col-sm-8
         = f.label :email,'Email'
@@ -20,11 +20,11 @@
     .row
       .form-group.col-sm-8
         = f.label :details,'Description'
-        = f.text_field :details, class: "form-control"        
+        = f.text_field :details, class: "form-control"
     .row
       .form-group.col-sm-8
         = f.label :school_role,'Choose Role'
-        = f.select :school_role, prepare_user_roles, class: "form-control"    
+        = f.select :school_role, prepare_user_roles, class: "form-control"  
     .row
       .col-md-12
-        = f.submit "Update Profile", class: "btn btn-primary"
+        = f.submit "Create User", class: "btn btn-primary"

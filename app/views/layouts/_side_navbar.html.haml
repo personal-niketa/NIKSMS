@@ -7,7 +7,7 @@
         %span.icon-bar
         %span.icon-bar
         %span.icon-bar
-      %a.navbar-brand{:href => "#"} Brand
+      %a.navbar-brand{:href => "#"} NIKSMS
     / Collect the nav links, forms, and other content for toggling
     #bs-sidebar-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
@@ -16,58 +16,10 @@
             Home
             %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-home{:style => "font-size:16px;"}
         %li
-          %a{:href => "#"}
-            Profile
+          = link_to users_path, method: :get do
             %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-user{:style => "font-size:16px;"}
+            Manage Users
         %li
-          %a{:href => "#"}
-            Messages
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-envelope{:style => "font-size:16px;"}
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Settings
-            %span.caret
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-cog{:style => "font-size:16px;"}
-          %ul.dropdown-menu.forAnimate{:role => "menu"}
-            %li
-              %a{:href => "#"} Action
-            %li
-              %a{:href => "#"} Another action
-            %li
-              %a{:href => "#"} Something else here
-            %li.divider
-            %li
-              %a{:href => "#"} Separated link
-            %li.divider
-            %li
-              %a{:href => "#"} One more separated link
-        %li
-          %a{:href => "#"}
-            Home
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-home{:style => "font-size:16px;"}
-        %li
-          %a{:href => "#"}
-            Profile
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-user{:style => "font-size:16px;"}
-        %li
-          %a{:href => "#"}
-            Messages
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-envelope{:style => "font-size:16px;"}
-        %li.dropdown
-          %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
-            Settings
-            %span.caret
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-cog{:style => "font-size:16px;"}
-          %ul.dropdown-menu.forAnimate{:role => "menu"}
-            %li
-              %a{:href => "#"} Action
-            %li
-              %a{:href => "#"} Another action
-            %li
-              %a{:href => "#"} Something else here
-            %li.divider
-            %li
-              %a{:href => "#"} Separated link
-            %li.divider
-            %li
-              %a{:href => "#"} One more separated link
+          = link_to school_classes_path, method: :get do
+            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-star{:style => "font-size:16px;"}
+            Manage Classes 

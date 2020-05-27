@@ -1,4 +1,4 @@
-    body,html{
+  body,html{
     height: 100%;
   }
 
@@ -190,7 +190,8 @@ tr:nth-child(even) {
 
 #centerwrap { 
   position: absolute;
-  left: 30%;
+  left: 17%;
+  padding-bottom: 50px;
 }   
 
 .button {
@@ -204,4 +205,24 @@ tr:nth-child(even) {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+}
+
+.right-button{
+  float: right;
+}
+
+.centerwrap-align{
+  left: 20% !important;
+}
+
+.td-font{
+  font-size: 14px !important;
+}
+
+.panel-cls{
+  text-align: center;
+}
+
+.desc_h6 {
+  min-height: 50px;
 }

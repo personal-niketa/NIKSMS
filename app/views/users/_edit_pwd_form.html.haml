@@ -1,0 +1,15 @@
+%h1 Change Your Password
+= form_for user, url: update_password_user_path(id: user.id), method: :patch do |f|
+  .row
+    .form-group.col-sm-8
+      = f.label :password,'New Password'
+      %br
+      = f.password_field :password, autocomplete: "off" , class: "form-control"
+  .row
+    .form-group.col-sm-8
+      = f.label :password_confirmation,'Password Confirmation'
+      %br
+      = f.password_field :password_confirmation, class: "form-control"
+  .row
+    .col-md-12
+      = f.submit "Change Password", class: "btn btn-primary"

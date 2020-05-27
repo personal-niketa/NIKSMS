@@ -3,4 +3,5 @@ class School < ApplicationRecord
   resourcify
 
   has_many :users
+  has_many :school_classes
 end

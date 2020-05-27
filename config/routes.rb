@@ -9,9 +9,14 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
   
-  resources :users do
+  resources :users, except: :create do
     collection do
       post 'registration'
+      post 'create_user'
+    end
+    member do
+      get 'edit_password'
+      patch 'update_password'
     end
   end
 
@@ -21,5 +26,8 @@ Rails.application.routes.draw do
       post 'update_profile'
     end
   end
+
+  resources :school_classes
+  resources :class_sections
 
 end

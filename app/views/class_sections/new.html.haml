@@ -1,0 +1,18 @@
+.container#centerwrap
+  %h1 Add New Section
+  = form_for @class_section, url: class_sections_path(school_class_id: @school_class.id), method: :post do |f|
+    .row
+      .form-group.col-sm-8
+        = f.label :section_name,'Section Name'
+        = f.text_field :section_name, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :description,'Description'
+        = f.text_field :description, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :capacity,'Capacity'
+        = f.number_field :capacity, class: "form-control"          
+    .row
+      .col-md-12
+        = f.submit "Create Section", class: "btn btn-primary"

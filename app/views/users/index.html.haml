@@ -1,0 +1,33 @@
+#centerwrap.container
+  .row
+    .col-md-10
+      %h2{style: "font-weight: bold"} Manage Users
+      = link_to new_user_path, class: "btn btn-primary", style: "margin-bottom: 10px; float:right;"  do
+        %i.glyphicon.glyphicon-plus
+        Add User
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr.td-font{style: "background-color: #428bca; color: white;"}
+            %th Name
+            %th Email
+            %th Contact
+            %th Details
+            %th Actions
+        %tbody
+          - @users.each do |user|
+            %tr
+              %td.td-font
+                = user.full_name.titleize
+                &nbsp;
+                %span.label{class: (user.has_role? :admin) ? "label-danger" : "label-primary"}
+                  = user_role(user)
+              %td.td-font= user.email  
+              %td.td-font= user.phone
+              %td.td-font= user.details
+              %td.td-font
+                - unless user.has_role? :admin
+                  = link_to edit_user_path(id: user.id), class: "btn btn-primary" do
+                    %i.glyphicon.glyphicon-pencil
+                  &nbsp;
+                  = link_to user_path(id: user.id), data:{confirm: "Are you sure,you want to delete this user?"}, method: :delete, class: "btn btn-primary" do
+                    %i.glyphicon.glyphicon-trash
