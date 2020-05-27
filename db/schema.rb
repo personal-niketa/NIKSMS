@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_124946) do
+ActiveRecord::Schema.define(version: 2020_05_26_142819) do
+
+  create_table "class_sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "section_name"
+    t.text "description"
+    t.bigint "school_class_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "capacity", default: 0
+    t.index ["school_class_id"], name: "index_class_sections_on_school_class_id"
+  end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -21,6 +31,14 @@ ActiveRecord::Schema.define(version: 2020_05_03_124946) do
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["name"], name: "index_roles_on_name"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "school_classes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "class_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "school_id"
+    t.index ["school_id"], name: "index_school_classes_on_school_id"
   end
 
   create_table "schools", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -43,6 +61,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_124946) do
     t.bigint "school_id"
     t.text "first_name"
     t.text "last_name"
+    t.text "details"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["school_id"], name: "index_users_on_school_id"

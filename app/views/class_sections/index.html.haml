@@ -1,0 +1,26 @@
+#centerwrap.container
+  .row
+    .col-md-10
+      %h2{style: "font-weight: bold"} Manage Sections for Class #{@school_class.class_name}
+      = link_to new_class_section_path(school_class_id: @school_class.id), class: "btn btn-success", style: "margin-bottom: 10px; float:right;"  do
+        %i.glyphicon.glyphicon-plus
+        Add Section
+      .row
+      - @class_sections.each do |class_section|
+        .col-sm-4
+          .panel.panel-primary.text-center
+            .panel-heading
+              %div
+                %h5
+                  Section #{class_section.section_name}
+                  %span.badge.badge-light 
+                    Strength 
+                    %span.badge{style: "background-color: green; color: white;"}
+                      #{class_section.capacity}
+                %h6.desc_h6= class_section.description
+            .panel-body 
+              = link_to edit_class_section_path(id: class_section.id) do
+                %i.glyphicon.glyphicon-pencil.pull-left
+              &nbsp;
+              = link_to class_section_path(id: class_section.id, school_class_id: class_section.school_class_id), data:{confirm: "Are you sure,you want to delete this Section?"}, method: :delete do
+                %i.glyphicon.glyphicon-trash.pull-right

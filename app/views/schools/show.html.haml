@@ -1,5 +1,5 @@
 #centerwrap
-  .jumbotron
+  .jumbotron#personal_details
     %h1 Personal Details
     %table
       %tr
@@ -15,10 +15,12 @@
         %td
           = current_user.last_name
     .div
-      = link_to edit_user_path(id: current_user.id), method: :get, class: 'button' do  
+      = link_to edit_user_path(id: current_user.id), class: 'button' do  
         %i.glyphicon.glyphicon-edit
         Modify Details
-
+      = link_to edit_password_user_path(id: current_user.id), remote: true, class: 'button right-button' do  
+        %i.glyphicon.glyphicon-edit
+        Change Password  
   .jumbotron     
     %h1 School Details
     %table
@@ -38,7 +40,3 @@
       = link_to edit_profile_school_path(id: @school.id), method: :get, class: 'button' do  
         %i.glyphicon.glyphicon-edit
         Modify Details
-        
-
-
-

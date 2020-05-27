@@ -4,6 +4,7 @@
 Rails.application.config.assets.version = '1.0'
 Rails.application.config.assets.precompile += %w( default_school.scss )
 Rails.application.config.assets.precompile += %w( dashboard/dashboard.scss )
+Rails.application.config.assets.precompile += %w( school_classes )
 
 Rails.application.config.assets.precompile += %w(admin/admin.js dashboard/dashboard.js)
 # Add additional assets to the asset load path.

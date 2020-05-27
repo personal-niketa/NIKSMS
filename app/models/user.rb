@@ -7,5 +7,10 @@ class User < ApplicationRecord
 
   belongs_to :school
 
-  attr_accessor :school_name
+  attr_accessor :school_name, :school_role
+
+  def full_name
+  	[self.first_name, self.last_name].join(' ')
+  end
+  
 end
