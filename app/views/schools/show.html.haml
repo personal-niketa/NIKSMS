@@ -20,23 +20,24 @@
         Modify Details
       = link_to edit_password_user_path(id: current_user.id), remote: true, class: 'button right-button' do  
         %i.glyphicon.glyphicon-edit
-        Change Password  
-  .jumbotron     
-    %h1 School Details
-    %table
-      %tr
-        %td School Name:
-        %td
-          = @school.school_name
-      %tr
-        %td School Address:
-        %td
-          = @school.address
-      %tr
-        %td School Board:
-        %td
-          = @school.board
-    .div
-      = link_to edit_profile_school_path(id: @school.id), method: :get, class: 'button' do  
-        %i.glyphicon.glyphicon-edit
-        Modify Details
+        Change Password
+  - if current_user.has_role? :admin      
+    .jumbotron     
+      %h1 School Details
+      %table
+        %tr
+          %td School Name:
+          %td
+            = @school.school_name
+        %tr
+          %td School Address:
+          %td
+            = @school.address
+        %tr
+          %td School Board:
+          %td
+            = @school.board
+      .div
+        = link_to edit_profile_school_path(id: @school.id), method: :get, class: 'button' do  
+          %i.glyphicon.glyphicon-edit
+          Modify Details

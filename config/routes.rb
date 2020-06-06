@@ -27,7 +27,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :batches do
+    collection do
+      post 'choose_school'
+    end
+  end
+
   resources :school_classes
   resources :class_sections
+  resources :admissions
 
 end
