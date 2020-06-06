@@ -1,0 +1,26 @@
+#centerwrap.container
+  .row
+    .col-md-10
+      %h2{style: "font-weight: bold"} Manage Batches
+      = link_to new_batch_path, class: "btn btn-primary", style: "margin-bottom: 10px; float:right;"  do
+        %i.glyphicon.glyphicon-plus
+        Add Batch
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr.td-font{style: "background-color: #428bca; color: white;"}
+            %th Batch Name
+            %th Actions
+        %tbody
+          - @batches.each do |batch|
+            %tr
+              %td.td-font
+                = batch.batch_name
+              %td.td-font  
+                = link_to edit_batch_path(id: batch.id), class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-pencil
+                &nbsp;
+                = link_to batch_path(id: batch.id), data:{confirm: "Are you sure,you want to delete this batch?"}, method: :delete, class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-trash
+                &nbsp;  
+                = link_to batch_path(id: batch.id), method: :get, class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-eye-open  

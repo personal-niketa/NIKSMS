@@ -15,11 +15,21 @@
           %a{:href => "#"}
             Home
             %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-home{:style => "font-size:16px;"}
-        %li
-          = link_to users_path, method: :get do
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-user{:style => "font-size:16px;"}
-            Manage Users
-        %li
-          = link_to school_classes_path, method: :get do
-            %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-star{:style => "font-size:16px;"}
-            Manage Classes 
+        - unless current_user.has_role? :admin       
+          %li.active
+            %a{:href => "#"}
+              Manage Students  
+              %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-lock{:style => "font-size:16px;"}
+        - if current_user.has_role? :admin 
+          %li
+            = link_to users_path, method: :get do
+              %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-user{:style => "font-size:16px;"}
+              Manage Users     
+          %li
+            = link_to school_classes_path, method: :get do
+              %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-star{:style => "font-size:16px;"}
+              Manage Classes
+          %li
+            = link_to batches_path, method: :get do
+              %span.pull-right.hidden-xs.showopacity.glyphicon.glyphicon-th{:style => "font-size:16px;"}
+              Manage Batches    

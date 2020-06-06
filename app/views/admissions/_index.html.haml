@@ -1,0 +1,44 @@
+%table.table.table-striped.table-bordered
+  %thead
+    %tr.td-font{style: "background-color: #428bca; color: white;"}
+      %th Roll No
+      %th Student Name
+      %th Email
+      %th Gender
+      %th Contact No
+      %th Address
+      %th Father Name
+      %th Mother Name
+      %th Country
+  %tbody
+    - if admissions.present?
+      - admissions.each do |admission|
+        - student = admission.student
+        %tr
+          %td.td-font
+            = admission.roll_no   
+          %td.td-font
+            = student.name
+            &nbsp;
+            %span.label{class: "label-danger"}
+              = country_label(student.country)
+            - if student.country == "USA" || student.country == "UK"
+              %span.label{class: "label-primary"} Hostel
+          %td.td-font
+            = student.email
+          %td.td-font
+            = student.gender
+          %td.td-font
+            = ("*" * 6) + student.contact_no[student.contact_no.length - 4 ,4] if student.contact_no.present?
+          %td.td-font
+            = student.address
+          %td.td-font
+            = student.father_name 
+          %td.td-font
+            = student.mother_name
+          %td.td-font
+            = student.country 
+    - else
+      %tr
+        %td{colspan: "8"}
+          No Record found

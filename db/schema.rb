@@ -10,7 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_142819) do
+ActiveRecord::Schema.define(version: 2020_06_06_155821) do
+
+  create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "batch_id"
+    t.bigint "student_id"
+    t.bigint "class_section_id"
+    t.integer "roll_no"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_admissions_on_batch_id"
+    t.index ["class_section_id"], name: "index_admissions_on_class_section_id"
+    t.index ["student_id"], name: "index_admissions_on_student_id"
+  end
+
+  create_table "batches", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "batch_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "class_sections", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "section_name"
@@ -49,6 +67,20 @@ ActiveRecord::Schema.define(version: 2020_05_26_142819) do
     t.text "board"
   end
 
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "name"
+    t.text "email"
+    t.datetime "dob"
+    t.text "gender"
+    t.text "father_name"
+    t.text "mother_name"
+    t.text "contact_no"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "country"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -75,4 +107,7 @@ ActiveRecord::Schema.define(version: 2020_05_26_142819) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "admissions", "batches"
+  add_foreign_key "admissions", "class_sections"
+  add_foreign_key "admissions", "students"
 end

@@ -1,0 +1,60 @@
+.container#centerwrap
+  .row
+    .col-sm-8
+      .well
+        %h1 Batch #{@batch.batch_name}
+        = form_tag choose_school_batches_path, remote: true, method: 'post', id: 'show_classes' do
+          .row
+            .form-group.col-sm-4
+              = label_tag :school_class,'Choose Class'
+              = select_tag 'school_class', options_from_collection_for_select(@school_classes, 'id', 'class_name'), class: "form-control"
+            .form-group.col-sm-4#section_details
+              = label_tag :school_class,'Choose Section'
+          .row
+            .col-md-12
+              = submit_tag("Select Class", class: 'hide', id: 'submit_btn')
+        .row#batch-middle
+          .col-sm-4
+            = link_to "Show Admissions", admissions_path(batch_id: @batch), remote: true, class: 'btn btn-primary', id: "show_admission"
+          .col-sm-4
+            = link_to "Make New Admission", new_admission_path(batch_id: @batch),  class: 'btn btn-primary', id: "make_admission"
+      .row#admission-details
+        .col-sm-8
+          %h4 Need to make selections first!
+  .row
+    .col-sm-8
+      .well#student-details    
+
+
+:javascript
+  $('#school_class').change(function() {
+    $('#submit_btn').click();
+  });
+
+  $("#make_admission").click(function(e) {
+    if (!$('#class_sections').length)
+    {
+      alert("Please select a section first!");
+      e.preventDefault();
+    }
+    else
+    {
+      var classSectionId = $('#class_sections').val();
+      var schoolClassId = $('#school_class').val();
+      var newUrl = $(this).attr('href') + "&class_section_id=" + classSectionId + "&school_class_id=" + schoolClassId;
+      $(this).attr("href", newUrl);
+    }
+  });
+  $("#show_admission").click(function(e) {
+    if (!$('#class_sections').length)
+    {
+      alert("Please select a section first!");
+      e.preventDefault();
+    }
+    else
+    {
+      var clsSecId = $('#class_sections').val(); 
+      var newUrl = $(this).attr('href') + "&class_section_id=" + clsSecId;
+      $(this).attr("href", newUrl);
+    }
+  });
