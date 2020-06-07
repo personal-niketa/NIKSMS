@@ -1,0 +1,52 @@
+.container#centerwrap
+  .row
+    .col-sm-8
+      %h1 Edit Admission
+      = form_for @admission, url: admission_path(id: @admission.id), method: :put do |f|
+        .row
+          .form-group.col-sm-8
+            = f.label :roll_no,'Roll Number'
+            = f.text_field :roll_no, class: "form-control"
+        = f.fields_for @admission.student do |s|    
+          .row
+            .form-group.col-sm-8
+              = s.label :name,'Student Name'
+              = s.text_field :name, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :email,'Student Email'
+              = s.text_field :email, class: "form-control"
+          .row
+            .form-group.col-sm-2
+              = s.radio_button :gender, 'Male'
+              = s.label :gender, "Male"
+            .form-group.col-sm-2 
+              = s.radio_button :gender, 'female'
+              = s.label :gender, "Female"
+          .row
+            .form-group.col-sm-8
+              = s.label :dob,'DOB'
+              = s.text_field :dob, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :father_name,'Father Name'
+              = s.text_field :father_name, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :mother_name,'Mother Name'
+              = s.text_field :mother_name, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :contact_no,'Contact no'
+              = s.text_field :contact_no, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :address,'Address'
+              = s.text_field :address, class: "form-control"
+          .row
+            .form-group.col-sm-8
+              = s.label :country,'Seletct Country'
+              = s.select :country, select_country_for_student, class: "form-control"  
+        .row
+          .col-md-12
+            = f.submit "Update Admission", class: "btn btn-primary"
