@@ -1,7 +1,9 @@
+#msg-show
 %table.table.table-striped.table-bordered
   %thead
-    %tr.td-font{style: "background-color: #428bca; color: white;"}
+    %tr.td-font.td-fix{style: "background-color: #428bca; color: white;"}
       %th Roll No
+      %th Admission Number
       %th Student Name
       %th Email
       %th Gender
@@ -10,35 +12,45 @@
       %th Father Name
       %th Mother Name
       %th Country
+      %th Actions
   %tbody
     - if admissions.present?
       - admissions.each do |admission|
         - student = admission.student
         %tr
-          %td.td-font
-            = admission.roll_no   
-          %td.td-font
+          %td.td-font.td-fix
+            = admission.roll_no
+          %td.td-font.td-fix
+            = admission.admission_number    
+          %td.td-font.td-fix
             = student.name
             &nbsp;
             %span.label{class: "label-danger"}
               = country_label(student.country)
             - if student.country == "USA" || student.country == "UK"
               %span.label{class: "label-primary"} Hostel
-          %td.td-font
+          %td.td-font.td-fix
             = student.email
-          %td.td-font
+          %td.td-font.td-fix
             = student.gender
-          %td.td-font
+          %td.td-font.td-fix
             = ("*" * 6) + student.contact_no[student.contact_no.length - 4 ,4] if student.contact_no.present?
-          %td.td-font
+          %td.td-font.td-fix
             = student.address
-          %td.td-font
+          %td.td-font.td-fix
             = student.father_name 
-          %td.td-font
+          %td.td-font.td-fix
             = student.mother_name
-          %td.td-font
-            = student.country 
+          %td.td-font.td-fix
+            = student.country.upcase
+          %td.td-font.td-fix
+            = link_to edit_admission_path(id: admission.id), class: "btn btn-primary" do
+              %i.glyphicon.glyphicon-pencil
+            &nbsp;
+            &nbsp;
+            = link_to admission_path(id: admission.id, batch_id: admission.batch_id, class_section_id: admission.class_section_id), remote: true, data:{confirm: "Are you sure,you want to delete this admission?"}, method: :delete, class: "btn btn-primary" do
+              %i.glyphicon.glyphicon-trash
     - else
       %tr
-        %td{colspan: "8"}
+        %td.td-font.td-fix{colspan: "8"}
           No Record found

@@ -32,6 +32,33 @@ class AdmissionsController < ApplicationController
     redirect_to batch_path(id: params[:batch_id])
   end
 
+  def destroy
+    @batch = Batch.find_by(id: params[:batch_id])
+    @class_section = ClassSection.find_by_id(params[:class_section_id])
+    @admissions = Admission.where(class_section_id: @class_section.id, batch_id: @batch.id)
+    admission = Admission.find_by(id: params[:id])
+    if admission.destroy
+      respond_to do |format|
+        format.js
+      end
+    end
+  end
+
+  def edit
+    @admission = Admission.find_by(id: params[:id])
+  end
+
+  def update
+    @admission = Admission.find_by(id: params[:id])
+    if @admission.update_attributes(admission_params.except(:student))
+      student = @admission.student
+      student.update_attributes(admission_params[:student])
+      flash[:success] = "Sucessfully updated!!"
+    else
+      flash[:error] = "Sorry! Something went wrong. Please contact support."
+    end
+    redirect_to batch_path(id: @admission.batch_id)
+  end
 
   private
 
@@ -39,8 +66,6 @@ class AdmissionsController < ApplicationController
     params.require(:admission).permit(:roll_no, student: [:name, :email, :gender, :dob, :father_name,
       :mother_name, :contact_no, :address, :country])
   end
-
-
 
 
 end
