@@ -47,6 +47,23 @@ class BatchesController < ApplicationController
     @school_classes = current_user.school.school_classes
   end
 
+  def assign_cls_teacher
+    @class_teacher = ClassTeacher.new
+    @cls_sec = ClassSection.find_by_id(params[:class_section_id])
+    @teachers = current_user.school.users.with_role(:teacher)
+  end
+
+  def assigned_cls_teacher
+    @class_teacher = ClassTeacher.new(class_teacher_params)
+    @class_teacher.batch_id = params[:id]
+    if @class_teacher.save!
+      flash[:success] = "Sucessfully added Class Teacher !!"
+    else
+      flash[:error] = "Sorry! Something went wrong. Please contact support."
+    end
+    redirect_to batches_path
+  end
+
   def choose_school
     @school_class = SchoolClass.find_by_id(params[:school_class])
     # @class_sections = @school_class.get_sections_by_name
@@ -61,6 +78,10 @@ class BatchesController < ApplicationController
 
   def batch_params
     params.require(:batch).permit(:batch_name)
+  end
+
+  def class_teacher_params
+    params.require(:class_teacher).permit(:class_section_id, :user_id)
   end
 
   

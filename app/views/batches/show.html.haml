@@ -18,6 +18,8 @@
             = link_to "Show Admissions", admissions_path(batch_id: @batch), remote: true, class: 'btn btn-primary', id: "show_admission"
           .col-sm-4
             = link_to "Make New Admission", new_admission_path(batch_id: @batch),  class: 'btn btn-primary', id: "make_admission"
+          .col-sm-4
+            = link_to "Assign Class Teacher", assign_cls_teacher_batch_path(id: @batch),  class: 'btn btn-primary', id: "assign_class_teacher"  
       .row#admission-details
         .col-sm-8
           %h4 Need to make selections first!
@@ -55,6 +57,20 @@
     {
       var clsSecId = $('#class_sections').val(); 
       var newUrl = $(this).attr('href') + "&class_section_id=" + clsSecId;
+      $(this).attr("href", newUrl);
+    }
+  });
+  $("#assign_class_teacher").click(function(e) {
+    if (!$('#class_sections').length)
+    {
+      alert("Please select a section first!");
+      e.preventDefault();
+    }
+    else
+    {
+      var clsSecId = $('#class_sections').val();
+      var schoolClassId = $('#school_class').val();
+      var newUrl = $(this).attr('href') + "?class_section_id=" + clsSecId + "&school_class_id=" + schoolClassId;
       $(this).attr("href", newUrl);
     }
   });

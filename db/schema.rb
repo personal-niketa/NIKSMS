@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_07_153417) do
+ActiveRecord::Schema.define(version: 2020_06_10_162835) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "batch_id"
@@ -39,6 +39,17 @@ ActiveRecord::Schema.define(version: 2020_06_07_153417) do
     t.datetime "updated_at", null: false
     t.integer "capacity", default: 0
     t.index ["school_class_id"], name: "index_class_sections_on_school_class_id"
+  end
+
+  create_table "class_teachers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "batch_id"
+    t.bigint "class_section_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_class_teachers_on_batch_id"
+    t.index ["class_section_id"], name: "index_class_teachers_on_class_section_id"
+    t.index ["user_id"], name: "index_class_teachers_on_user_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -111,4 +122,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_153417) do
   add_foreign_key "admissions", "batches"
   add_foreign_key "admissions", "class_sections"
   add_foreign_key "admissions", "students"
+  add_foreign_key "class_teachers", "batches"
+  add_foreign_key "class_teachers", "class_sections"
+  add_foreign_key "class_teachers", "users"
 end

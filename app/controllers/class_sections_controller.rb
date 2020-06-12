@@ -44,6 +44,8 @@ class ClassSectionsController < ApplicationController
     redirect_to class_sections_path(school_class_id: @school_class.id)
   end
 
+  
+
   private
 
   def class_section_params
