@@ -18,6 +18,11 @@
                     %span.badge{style: "background-color: green; color: white;"}
                       #{class_section.capacity}
                 %h6.desc_h6= class_section.description
+                / .row
+                /   .col-sm-6
+                /     %h5 Class Teacher: ' '
+                /   .col-sm-6
+                /     = link_to "(Change)", new_class_teacher_path(class_section_id:class_section.id, school_class_id: @school_class.id),  class: 'btn btn-primary'
             .panel-body 
               = link_to edit_class_section_path(id: class_section.id) do
                 %i.glyphicon.glyphicon-pencil.pull-left

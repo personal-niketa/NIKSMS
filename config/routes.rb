@@ -31,10 +31,15 @@ Rails.application.routes.draw do
     collection do
       post 'choose_school'
     end
+    member do
+      get 'assign_cls_teacher'
+      post 'assigned_cls_teacher'
+    end 
   end
 
   resources :school_classes
   resources :class_sections
   resources :admissions
+  resources :class_teachers
 
 end

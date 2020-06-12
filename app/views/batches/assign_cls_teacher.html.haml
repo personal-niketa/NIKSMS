@@ -1,0 +1,15 @@
+.container#centerwrap
+  .row
+    .col-md-10
+      %h1 Assign Class Teacher
+      = form_for @class_teacher, url: assigned_cls_teacher_batch_path(id: params[:id]), method: :post do |f|
+        .row
+          .form-group.col-sm-8
+            = f.hidden_field :class_section_id, value: @cls_sec.id, class: "form-control"
+        .row
+          .form-group.col-sm-8
+            = f.label :user_id,'Assign Class Teacher'
+            = f.select 'user_id', options_from_collection_for_select(@teachers, 'id', 'first_name'), class: "form-control"
+        .row
+          .col-md-12
+            = f.submit "Add Class Teacher", class: "btn btn-primary"
