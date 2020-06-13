@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_162835) do
+ActiveRecord::Schema.define(version: 2020_06_13_162436) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "batch_id"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2020_06_10_162835) do
     t.index ["batch_id"], name: "index_class_teachers_on_batch_id"
     t.index ["class_section_id"], name: "index_class_teachers_on_class_section_id"
     t.index ["user_id"], name: "index_class_teachers_on_user_id"
+  end
+
+  create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "batch_id"
+    t.bigint "school_class_id"
+    t.text "subject"
+    t.text "exam_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_exams_on_batch_id"
+    t.index ["school_class_id"], name: "index_exams_on_school_class_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -125,4 +136,6 @@ ActiveRecord::Schema.define(version: 2020_06_10_162835) do
   add_foreign_key "class_teachers", "batches"
   add_foreign_key "class_teachers", "class_sections"
   add_foreign_key "class_teachers", "users"
+  add_foreign_key "exams", "batches"
+  add_foreign_key "exams", "school_classes"
 end
