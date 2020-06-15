@@ -1,0 +1,10 @@
+.container#centerwrap
+  %h1 Add New Question for "#{@exam.exam_name}"
+  = form_for @que, url: question_papers_path(exam_id: @exam.id), method: :post do |f|
+    .row
+      .form-group.col-sm-8
+        = f.label :question,'Question'
+        = f.cktext_area :question, class: 'form-control', ckeditor: { language: 'uk'}   
+    .row
+      .col-md-12
+        = f.submit "Create Question", class: "btn btn-primary"

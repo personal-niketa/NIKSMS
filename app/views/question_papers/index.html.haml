@@ -1,0 +1,16 @@
+#centerwrap.container
+  .row
+    .col-md-10
+      %h2{style: "font-weight: bold"}= @exam.exam_name
+      = link_to new_question_paper_path(exam_id: @exam.id), class: "btn btn-primary", style: "margin-bottom: 10px; float:right;"  do
+        %i.glyphicon.glyphicon-plus
+        Add Question
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr.td-font{style: "background-color: #428bca; color: white;"}
+            %th Question
+        %tbody
+          - @questions.each do |que|
+            %tr
+              %td.td-font
+                = que.question.html_safe
