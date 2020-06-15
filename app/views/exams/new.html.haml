@@ -1,0 +1,22 @@
+.container#centerwrap
+  %h1 Add New Exam
+  = form_for @exam, url: exams_path, method: :post do |f|
+    .row
+      .form-group.col-sm-8
+        = f.label :exam_name,'Exam Name'
+        = f.text_field :exam_name, class: "form-control"
+    .row
+      .form-group.col-sm-8
+        = f.label :subject,'Subject'
+        = f.text_field :subject, class: "form-control"
+    .row
+      .form-group.col-sm-4
+        = f.label :school_class_id,'Assign Class'
+        = f.select 'school_class_id', options_from_collection_for_select(@school_classes, 'id', 'class_name'), class: "form-control"
+    .row
+      .form-group.col-sm-4
+        = f.label :batch_id,'Batch Name'
+        = f.select 'batch_id', options_from_collection_for_select(@batches, 'id', 'batch_name'), class: "form-control"         
+    .row
+      .col-md-12
+        = f.submit "Create Exam", class: "btn btn-primary"

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  mount Ckeditor::Engine => '/ckeditor'
+  
   devise_for :users
 
   devise_scope :user do
@@ -41,5 +43,7 @@ Rails.application.routes.draw do
   resources :class_sections
   resources :admissions
   resources :class_teachers
+  resources :exams
+  resources :question_papers
 
 end

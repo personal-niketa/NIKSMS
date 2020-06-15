@@ -7,6 +7,7 @@ Rails.application.config.assets.precompile += %w( dashboard/dashboard.scss )
 Rails.application.config.assets.precompile += %w( school_classes )
 
 Rails.application.config.assets.precompile += %w(admin/admin.js dashboard/dashboard.js)
+Rails.application.config.assets.precompile += %w[ckeditor/config.js]
 # Add additional assets to the asset load path.
 # Rails.application.config.assets.paths << Emoji.images_path
 # Add Yarn node_modules folder to the asset load path.

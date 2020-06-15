@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_13_162436) do
+ActiveRecord::Schema.define(version: 2020_06_15_194151) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "batch_id"
@@ -61,6 +61,14 @@ ActiveRecord::Schema.define(version: 2020_06_13_162436) do
     t.datetime "updated_at", null: false
     t.index ["batch_id"], name: "index_exams_on_batch_id"
     t.index ["school_class_id"], name: "index_exams_on_school_class_id"
+  end
+
+  create_table "question_papers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "exam_id"
+    t.text "question"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_question_papers_on_exam_id"
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -138,4 +146,5 @@ ActiveRecord::Schema.define(version: 2020_06_13_162436) do
   add_foreign_key "class_teachers", "users"
   add_foreign_key "exams", "batches"
   add_foreign_key "exams", "school_classes"
+  add_foreign_key "question_papers", "exams"
 end

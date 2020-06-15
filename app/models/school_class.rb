@@ -9,4 +9,5 @@ class SchoolClass < ApplicationRecord
     end
     sections
   end
+
 end

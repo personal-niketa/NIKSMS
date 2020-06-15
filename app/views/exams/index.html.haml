@@ -1,0 +1,35 @@
+#centerwrap.container
+  .row
+    .col-md-10
+      %h2{style: "font-weight: bold"} Manage Exams
+      = link_to new_exam_path, class: "btn btn-primary", style: "margin-bottom: 10px; float:right;"  do
+        %i.glyphicon.glyphicon-plus
+        Add Exam
+      %table.table.table-striped.table-bordered
+        %thead
+          %tr.td-font{style: "background-color: #428bca; color: white;"}
+            %th Exam Name
+            %th Subject Name
+            %th Class Name
+            %th Batch Name
+            %th Actions
+        %tbody
+          - @exams.each do |exam|
+            %tr
+              %td.td-font
+                = exam.exam_name
+              %td.td-font
+                = exam.subject
+              %td.td-font
+                = get_class_name(exam.school_class_id)
+              %td.td-font
+                = get_batch_name(exam.batch_id)     
+              %td.td-font  
+                = link_to edit_exam_path(id: exam.id), class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-pencil
+                &nbsp;
+                = link_to exam_path(id: exam.id), data:{confirm: "Are you sure,you want to delete this exam?"}, method: :delete, class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-trash
+                &nbsp;  
+                = link_to question_papers_path(id: exam.id), method: :get, class: "btn btn-primary" do
+                  %i.glyphicon.glyphicon-eye-open  
