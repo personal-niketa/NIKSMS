@@ -45,5 +45,6 @@ Rails.application.routes.draw do
   resources :class_teachers
   resources :exams
   resources :question_papers
+  resources :customer_registrations
 
 end

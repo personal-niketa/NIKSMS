@@ -230,3 +230,8 @@ tr:nth-child(even) {
 .td-fix{
   word-break: break-all;
 }
+
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}

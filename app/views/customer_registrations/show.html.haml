@@ -1,0 +1,27 @@
+#centerwrap
+  .jumbotron#personal_details
+    %table
+      %tr
+        %td First name:
+        %td
+          = @customer_registration.first_name
+      %tr
+        %td Last Name:
+        %td
+          = @customer_registration.last_name
+      %tr
+        %td Email:
+        %td
+          = @customer_registration.email
+      %tr
+        %td Source Of Hearing:
+        %td
+          = @customer_registration.source_of_hearing 
+      %tr
+        %td Hobby:
+        %td
+          = @customer_registration.hobby
+      %tr
+        %td Country:
+        %td
+          = @customer_registration.country_name        
