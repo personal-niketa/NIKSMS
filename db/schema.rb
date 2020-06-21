@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_194151) do
+ActiveRecord::Schema.define(version: 2020_06_21_174451) do
 
   create_table "admissions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "batch_id"
@@ -50,6 +50,17 @@ ActiveRecord::Schema.define(version: 2020_06_15_194151) do
     t.index ["batch_id"], name: "index_class_teachers_on_batch_id"
     t.index ["class_section_id"], name: "index_class_teachers_on_class_section_id"
     t.index ["user_id"], name: "index_class_teachers_on_user_id"
+  end
+
+  create_table "customer_registrations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.text "email"
+    t.integer "hobby"
+    t.integer "source_of_hearing"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "country"
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

@@ -2,6 +2,7 @@
   .row
     .col-md-10
       %h2{style: "font-weight: bold"}= @exam.exam_name
+      %b Generate PDF
       = link_to new_question_paper_path(exam_id: @exam.id), class: "btn btn-primary", style: "margin-bottom: 10px; float:right;"  do
         %i.glyphicon.glyphicon-plus
         Add Question

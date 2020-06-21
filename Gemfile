@@ -43,6 +43,7 @@ gem 'pry'
 gem 'devise'
 gem 'rolify'
 gem 'ckeditor'
+gem 'country_select', '~> 4.0', require: 'country_select_without_sort_alphabetical'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
