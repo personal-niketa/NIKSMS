@@ -3,10 +3,8 @@ class UserMailer < ApplicationMailer
 
   def welcome_email(school_email)
   	@email = school_email
-    mail(to: school_email,subject: "Notification")
+    mail(to: @email, subject: "Notification")
   end
 
-  # def login_alert()
-  # end
 
 end

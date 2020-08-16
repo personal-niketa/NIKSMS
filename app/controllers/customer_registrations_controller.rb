@@ -7,12 +7,14 @@ class CustomerRegistrationsController < ApplicationController
 
   def create
     @customer_registration = CustomerRegistration.new(customer_params)
-    if @customer_registration.save!
-      flash[:success] = "#{@customer_registration.email} registered successfully."
-    else
-      flash[:danger] = "Something went wrong."  
-    end
+    @customer_registration.save!
+    CustomerMailer.welcome_mail(@customer_registration.email).deliver_now!
+    flash[:success] = I18n.t('controller.customer_registrations.create.success')
     redirect_to customer_registration_path(id: @customer_registration.id)
+  rescue StandardError => e
+    ErrorLog.new.write("[CustomerRegistration][CreateError] customer=#{@customer_registration.inspect} error=#{e}")
+    flash[:danger] = "Something went wrong."
+    redirect_to new_customer_registration_path
   end
 
   def show
